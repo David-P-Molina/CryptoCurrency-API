@@ -5,12 +5,12 @@ class WalletsController < ApplicationController
   def index
     @wallets = Wallet.all
 
-    render json: @wallets
+    render json: WalletSerializer.new(@wallets)
   end
 
   # GET /wallets/1
   def show
-    render json: @wallet
+    render json: @wallet.slice(:id, :name, :total_usd_value, :initial_value, :current_value, :user_id, :username)
   end
 
   # POST /wallets
@@ -27,7 +27,7 @@ class WalletsController < ApplicationController
   # PATCH/PUT /wallets/1
   def update
     if @wallet.update(wallet_params)
-      render json: @wallet
+      render json: @wallet.slice(:id, :name, :total_usd_value, :initial_value, :current_value, :user_id, :username)
     else
       render json: @wallet.errors, status: :unprocessable_entity
     end
