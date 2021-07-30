@@ -12,9 +12,12 @@
 
 ActiveRecord::Schema.define(version: 2021_07_29_150423) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "coin_wallets", force: :cascade do |t|
-    t.integer "coin_id", null: false
-    t.integer "wallet_id"
+    t.bigint "coin_id", null: false
+    t.bigint "wallet_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["coin_id"], name: "index_coin_wallets_on_coin_id"
@@ -43,12 +46,11 @@ ActiveRecord::Schema.define(version: 2021_07_29_150423) do
     t.float "total_usd_value"
     t.float "initial_value"
     t.float "current_value"
-    t.integer "user_id", null: false
+    t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_wallets_on_user_id"
   end
 
   add_foreign_key "coin_wallets", "coins"
-  add_foreign_key "wallets", "users"
 end
