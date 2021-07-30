@@ -5,12 +5,12 @@ class CoinsController < ApplicationController
   def index
     @coins = Coin.all
 
-    render json: @coins
+    render json: ConversionSerializer.new(@coins)
   end
 
   # GET /coins/1
   def show
-    render json: @coin
+    render json: @coin.slice(:id, :name, :symbol, :initial_value, :current_value, :updated_at)
   end
 
   # POST /coins
@@ -27,7 +27,7 @@ class CoinsController < ApplicationController
   # PATCH/PUT /coins/1
   def update
     if @coin.update(coin_params)
-      render json: @coin
+      render json: @coin.slice(:id, :name, :symbol, :initial_value, :current_value, :updated_at)
     else
       render json: @coin.errors, status: :unprocessable_entity
     end
