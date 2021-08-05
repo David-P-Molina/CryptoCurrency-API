@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_29_150423) do
+ActiveRecord::Schema.define(version: 2021_08_05_152816) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,12 @@ ActiveRecord::Schema.define(version: 2021_07_29_150423) do
     t.float "current_value"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.float "day"
+    t.float "week"
+    t.integer "marketcap"
+    t.integer "volume_quantity"
+    t.float "volume_price"
+    t.integer "circulation"
   end
 
   create_table "users", force: :cascade do |t|
