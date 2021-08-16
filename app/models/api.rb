@@ -48,5 +48,18 @@ class Api
         # new_coin.date_added = base["date_added"]
         # new_coin. = base["max_supply"]
     end
+
+    def update_coins
+    
+    end
+    def update_coin(update_coin, info)
+        base = info[1]
+        price_info = base["quote"]["USD"]
+        update_coin.current_value = price_info["price"]
+        update_coin.day = price_info["percent_change_24h"]
+        update_coin.week = price_info["percent_change_7d"]
+        update_coin.marketcap = price_info["market_cap"]
+        update_coin.circulation = base["circulating_supply"]
+    end
 end
 Api.create_coins
