@@ -6,6 +6,10 @@ class Api < ApplicationRecord
     def parse_coin(json)
         JSON.parse(json)
     end
+
+    def create_coins
+
+    end
 url = "https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest"
 key = ENV[API_KEY]
 limiter = "&id=1,2,3,4,5,6,7,8,9,10,12,13,14,15,16,17,18,19,20,22&convert=USD"
