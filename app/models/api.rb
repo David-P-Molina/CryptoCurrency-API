@@ -50,7 +50,8 @@ class Api
     end
 
     def update_coins
-    
+        Coin.all.each do |coin|
+            Api.update_coin(coin,)#need to add second argument
     end
     def update_coin(update_coin, info)
         base = info[1]
