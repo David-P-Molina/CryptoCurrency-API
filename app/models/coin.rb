@@ -1,3 +1,3 @@
 class Coin < ApplicationRecord
-    has_many :wallets, through :coin
+    has_many :wallets, through: :coin
 end
