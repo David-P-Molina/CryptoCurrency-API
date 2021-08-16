@@ -25,26 +25,28 @@ class Api
     def self.create_coins
         test = self.parse_coin["data"]
         test.each do |coin|
-            binding.pry
-            coin_info = Coin.find_or_create_by(coin)
+            new_coin = Coin.new(coin)
+            Api.create_coin(new_coin, coin)
         end
         p Coin.all
     end
 
-    def self.create_coin(coin_info)
-        base = coin_info[1]
+    def self.create_coin(new_coin, coin)
+        base = coin[1]
         price_info = base["quote"]["USD"]
-         = base["name"]
-         = base["symbol"]
-         = base["date_added"]
-         = base["max_supply"]
-         = base["circulating_supply"]
-         = base["total_supply"]
-         = price_info["price"]
-         = price_info["volume_24h"]
-         = price_info["percent_change_24h"]
-         = price_info["percent_change_7d"]
-         = price_info["market_cap"]
+        new_coin.name = base["name"]
+        new_coin.symbol = base["symbol"]
+        new_coin.initial_value = price_info["price"]
+        new_coin.current_value = price_info["price"]
+        new_coin.day = price_info["percent_change_24h"]
+        new_coin.week = price_info["percent_change_7d"]
+        new_coin.marketcap = price_info["market_cap"]
+        new_coin.circulation = base["circulating_supply"]
+        ## figure out what coloumns need to be added and what needs to be removed
+        #new_coin. = base["total_supply"]
+        #new_coin. = price_info["volume_24h"]
+        # new_coin.date_added = base["date_added"]
+        # new_coin. = base["max_supply"]
     end
 end
 Api.create_coins
