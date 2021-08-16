@@ -18,12 +18,12 @@ class Api
         coins_list
     end
 
-    def self.parse_coin(coins_list)
-        JSON.parse(coins_list)
+    def self.parse_coin
+       JSON.parse(self.retrieve_coins_info)
     end
 
     def self.create_coins
 
     end
 end
-Api.retrieve_coins_info
+Api.parse_coin
