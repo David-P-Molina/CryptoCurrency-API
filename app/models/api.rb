@@ -1,10 +1,12 @@
 class Api < ApplicationRecord
     def self.retrieve_coins_info
-        coins_response = JSON.parse(HTTParty.get("#{url + key + limiter}").body)
-        coins_response
+        coins_response = (HTTParty.get("#{url + key + limiter}")
+        coins_list = coins_response.body
+        coins_list
     end
-    def self.parse_coin(json)
-        JSON.parse(json)
+
+    def self.parse_coin(coins_list)
+        JSON.parse(coins_list)
     end
 
     def self.create_coins
