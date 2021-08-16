@@ -23,7 +23,14 @@ class Api
     end
 
     def self.create_coins
+        test = self.parse_coin
+        test.each do |coin|
+            Coin.find_or_create_by(coin)
+        end
+        p Coin.all
+    end
 
+    def self.create_coin
     end
 end
-Api.parse_coin
+Api.create_coins
