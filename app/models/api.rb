@@ -1,13 +1,13 @@
 class Api < ApplicationRecord
-    def retrieve_coin_info
+    def self.retrieve_coins_info
         coins_response = JSON.parse(HTTParty.get("#{url + key + limiter}").body)
         coins_response
     end
-    def parse_coin(json)
+    def self.parse_coin(json)
         JSON.parse(json)
     end
 
-    def create_coins
+    def self.create_coins
 
     end
 url = "https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest"
