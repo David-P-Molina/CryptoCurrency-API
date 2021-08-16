@@ -5,7 +5,7 @@ class CoinsController < ApplicationController
   def index
     @coins = Coin.all
 
-    render json: ConversionSerializer.new(@coins)
+    render json: CoinSerializer.new(@coins)
   end
 
   # GET /coins/1
