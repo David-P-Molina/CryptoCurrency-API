@@ -23,14 +23,28 @@ class Api
     end
 
     def self.create_coins
-        test = self.parse_coin
+        test = self.parse_coin["data"]
         test.each do |coin|
-            Coin.find_or_create_by(coin)
+            binding.pry
+            coin_info = Coin.find_or_create_by(coin)
         end
         p Coin.all
     end
 
-    def self.create_coin
+    def self.create_coin(coin_info)
+        base = coin_info[1]
+        price_info = base["quote"]["USD"]
+         = base["name"]
+         = base["symbol"]
+         = base["date_added"]
+         = base["max_supply"]
+         = base["circulating_supply"]
+         = base["total_supply"]
+         = price_info["price"]
+         = price_info["volume_24h"]
+         = price_info["percent_change_24h"]
+         = price_info["percent_change_7d"]
+         = price_info["market_cap"]
     end
 end
 Api.create_coins
