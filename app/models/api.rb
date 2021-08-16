@@ -1,4 +1,8 @@
+require 'pry'
+require 'httparty'
+
 class Api < ApplicationRecord
+    include HTTParty
     def self.retrieve_coins_info
         coins_response = (HTTParty.get("#{url + key + limiter}")
         coins_list = coins_response.body
