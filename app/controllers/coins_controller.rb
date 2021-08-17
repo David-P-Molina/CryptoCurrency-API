@@ -1,4 +1,5 @@
 class CoinsController < ApplicationController
+  
   before_action :set_coin, only: [:show, :update, :destroy]
 
   # GET /coins
