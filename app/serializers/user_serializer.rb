@@ -1,4 +1,4 @@
 class UserSerializer
-  include JSONAPI::Serializer
-  attributes :username, :email#, :password #:wallet ##User's wallet
+  include FastJsonapi::ObjectSerializer
+  attributes :id, :email, :created_at
 end
