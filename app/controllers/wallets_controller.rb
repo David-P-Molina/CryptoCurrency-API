@@ -1,6 +1,6 @@
 class WalletsController < ApplicationController
   before_action :set_wallet, only: [:show, :update, :destroy]
-
+  before_action :authenticate_user!
   # GET /wallets
   # def index use if user has multiple wallets
   #   @wallets = Wallet.all
