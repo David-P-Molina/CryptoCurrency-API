@@ -18,3 +18,6 @@ Coin.find_or_create_by(name: 'Digitalcoin', symbol: 'DGC', initial_value: 0.0110
 Coin.find_or_create_by(name: 'Franko', symbol: 'FRK', initial_value: 0.1236935, current_value: 0.1236935, day: 0, week: 17.6785, marketcap: 115129.8279145, circulation: 930767, api_id: 19)
 Coin.find_or_create_by(name: 'Elacoin', symbol: 'ELC', initial_value: 0.46424729, current_value: 0.46424729, day: 0, week: 0, marketcap: 189308.09116476233, circulation: 407774.25144423, api_id: 20)
 Coin.find_or_create_by(name: 'Luckycoin', symbol: 'LKY', initial_value: 0.00057625, current_value: 0.00057625, day: 0, week: 0, marketcap: 11136.791406585939, circulation: 19326319.14375, api_id: 22)
+
+Wallet.find_or_create_by(name: "Test Wallet", user_id: 1, total_usd_value: 10000)
+User.find_or_create_by(username: "test", email: "example.com")
