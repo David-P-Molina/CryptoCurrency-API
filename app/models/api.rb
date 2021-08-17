@@ -22,10 +22,19 @@ class Api
       coins_parsed = JSON.parse(self.retrieve_coins_info)
       coins_parsed["data"]
     end
-    def print_initial_seed_data
+    def self.print_initial_seed_data
         self.parse_coin.each do |coin|
-
-           puts "Coin.find_or_create_by(name: '#{name}', release_date: '#{release_date}', klass: '#{klass}')" if !name.nil? && !release_date.nil? && !klass.nil? 
+            base = coin[1]
+            price_info = base["quote"]["USD"]
+            name = base["name"]
+            symbol = base["symbol"]
+            initial_value = price_info["price"]
+            current_value = price_info["price"]
+            day = price_info["percent_change_24h"]
+            week = price_info["percent_change_7d"]
+            marketcap = price_info["market_cap"]
+            circulation = base["circulating_supply"]
+            puts "Coin.find_or_create_by(name: '#{name}', symbol: '#{symbol}', initial_value: '#{initial_value}', current_value = '#{current_value}', day: '#{day}', week: '#{week}', marketcap: '#{marketcap}', circulation: '#{circulation}')" if !name.nil? && !symbol.nil? 
         end
     end
 
@@ -50,6 +59,7 @@ class Api
     def update_coins
         Coin.all.each do |coin|
             Api.update_coin(coin,)#need to add second argument
+        end
     end
     def update_coin(update_coin, info)
         base = info[1]
@@ -61,4 +71,4 @@ class Api
         update_coin.circulation = base["circulating_supply"]
     end
 end
-Api.create_coins
+Api.print_initial_seed_data
