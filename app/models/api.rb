@@ -31,24 +31,33 @@ class Api
         p Coin.all
     end
 
-    def self.create_coin(new_coin, coin)
-        base = coin[1]
-        price_info = base["quote"]["USD"]
-        new_coin.name = base["name"]
-        new_coin.symbol = base["symbol"]
-        new_coin.initial_value = price_info["price"]
-        new_coin.current_value = price_info["price"]
-        new_coin.day = price_info["percent_change_24h"]
-        new_coin.week = price_info["percent_change_7d"]
-        new_coin.marketcap = price_info["market_cap"]
-        new_coin.circulation = base["circulating_supply"]
-        ## figure out what coloumns need to be added and what needs to be removed
-        #new_coin. = base["total_supply"]
-        #new_coin. = price_info["volume_24h"]
-        # new_coin.date_added = base["date_added"]
-        # new_coin. = base["max_supply"]
+    # def self.create_coin(new_coin, coin)
+    #     base = coin[1]
+    #     price_info = base["quote"]["USD"]
+    #     new_coin.name = base["name"]
+    #     new_coin.symbol = base["symbol"]
+    #     new_coin.initial_value = price_info["price"]
+    #     new_coin.current_value = price_info["price"]
+    #     new_coin.day = price_info["percent_change_24h"]
+    #     new_coin.week = price_info["percent_change_7d"]
+    #     new_coin.marketcap = price_info["market_cap"]
+    #     new_coin.circulation = base["circulating_supply"]
+    #     ## figure out what coloumns need to be added and what needs to be removed
+    #     #new_coin. = base["total_supply"]
+    #     #new_coin. = price_info["volume_24h"]
+    #     # new_coin.date_added = base["date_added"]
+    #     # new_coin. = base["max_supply"]
+    # end
+    def print_initial_seed_data
+            self.get_champions.each do |row|
+                #binding.pry
+               champion = row.css("td").text.strip.split("\n")
+               name = champion[0]
+               release_date = champion[1]
+               klass = champion[2]
+               puts "Champion.create(name: '#{name}', release_date: '#{release_date}', klass: '#{klass}')" if !name.nil? && !release_date.nil? && !klass.nil? 
+            end
     end
-
     def update_coins
         Coin.all.each do |coin|
             Api.update_coin(coin,)#need to add second argument
