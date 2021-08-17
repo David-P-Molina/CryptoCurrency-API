@@ -2,20 +2,20 @@ class WalletsController < ApplicationController
   before_action :set_wallet, only: [:show, :update, :destroy]
 
   # GET /wallets
-  def index
-    @wallets = Wallet.all
+  # def index use if user has multiple wallets
+  #   @wallets = Wallet.all
 
-    render json: WalletSerializer.new(@wallets)
-  end
+  #   render json: WalletSerializer.new(@wallets)
+  # end
 
   # GET /wallets/1
-  def show
-    render json: @wallet.slice(:id, :name, :total_usd_value, :initial_value, :current_value, :user_id, :username)
-  end
+  # def show
+  #   render json: @wallet.slice(:id, :name, :total_usd_value, :initial_value, :current_value, :user_id, :username)
+  # end
 
   # POST /wallets
   def create
-    @wallet = Wallet.new(wallet_params)
+    @wallet = current_user.build_wallet(wallet_params)
 
     if @wallet.save
       render json: @wallet, status: :created, location: @wallet
