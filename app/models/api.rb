@@ -19,16 +19,14 @@ class Api
     end
 
     def self.parse_coin
-       JSON.parse(self.retrieve_coins_info)
+      coins_parsed = JSON.parse(self.retrieve_coins_info)
+      coins_parsed["data"]
     end
+    def print_initial_seed_data
+        self.parse_coin.each do |coin|
 
-    def self.create_coins
-        test = self.parse_coin["data"]
-        test.each do |coin|
-            new_coin = Coin.new(coin)
-            Api.create_coin(new_coin, coin)
+           puts "Coin.find_or_create_by(name: '#{name}', release_date: '#{release_date}', klass: '#{klass}')" if !name.nil? && !release_date.nil? && !klass.nil? 
         end
-        p Coin.all
     end
 
     # def self.create_coin(new_coin, coin)
@@ -48,16 +46,7 @@ class Api
     #     # new_coin.date_added = base["date_added"]
     #     # new_coin. = base["max_supply"]
     # end
-    def print_initial_seed_data
-            self.get_champions.each do |row|
-                #binding.pry
-               champion = row.css("td").text.strip.split("\n")
-               name = champion[0]
-               release_date = champion[1]
-               klass = champion[2]
-               puts "Champion.create(name: '#{name}', release_date: '#{release_date}', klass: '#{klass}')" if !name.nil? && !release_date.nil? && !klass.nil? 
-            end
-    end
+
     def update_coins
         Coin.all.each do |coin|
             Api.update_coin(coin,)#need to add second argument
