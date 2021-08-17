@@ -35,7 +35,7 @@ class Api
             marketcap = price_info["market_cap"]
             circulation = base["circulating_supply"]
             api_id = base["id"]
-            puts "Coin.find_or_create_by(name: '#{name}', symbol: '#{symbol}', initial_value: #{initial_value}, current_value = #{current_value}, day: #{day}, week: #{week}, marketcap: #{marketcap}, circulation: #{circulation}, api_id: #{api_id})" if !name.nil? && !current_value.nil? 
+            puts "Coin.find_or_create_by(name: '#{name}', symbol: '#{symbol}', initial_value: #{initial_value}, current_value: #{current_value}, day: #{day}, week: #{week}, marketcap: #{marketcap}, circulation: #{circulation}, api_id: #{api_id})" if !name.nil? && !current_value.nil? 
         end
     end
 

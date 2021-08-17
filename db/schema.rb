@@ -33,10 +33,10 @@ ActiveRecord::Schema.define(version: 2021_08_05_152816) do
     t.datetime "updated_at", precision: 6, null: false
     t.float "day"
     t.float "week"
-    t.integer "marketcap"
-    t.integer "volume_quantity"
+    t.bigint "marketcap"
+    t.bigint "volume_quantity"
     t.float "volume_price"
-    t.integer "circulation"
+    t.bigint "circulation"
     t.integer "api_id"
   end
 
