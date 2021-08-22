@@ -20,4 +20,3 @@ Coin.find_or_create_by(name: 'Elacoin', symbol: 'ELC', initial_value: 0.46424729
 Coin.find_or_create_by(name: 'Luckycoin', symbol: 'LKY', initial_value: 0.00057625, current_value: 0.00057625, day: 0, week: 0, marketcap: 11136.791406585939, circulation: 19326319.14375, api_id: 22)
 
 Wallet.find_or_create_by(name: "Test Wallet", user_id: 1, total_usd_value: 10000)
-User.find_or_create_by(username: "test", email: "example.com", encrypted_password: "password1")
